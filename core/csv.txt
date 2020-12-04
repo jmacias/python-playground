@@ -1,0 +1,4 @@
+name, age
+Juan, 12
+Malu, 10
+Diego, 12
