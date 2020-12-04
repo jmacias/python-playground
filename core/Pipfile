@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 
 [dev-packages]
+notebook = "==5.6.0"
+pytest = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.7"
