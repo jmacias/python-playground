@@ -1,0 +1,9 @@
+{
+    "python.pythonPath": "/Users/a80298635/.local/share/virtualenvs/core-cdVJT-uv/bin/",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
+}
