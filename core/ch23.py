@@ -3,7 +3,148 @@
 # to execute a chunk of code just use `# %%` And
 # Ctrl+ Enter will execute the code
 
+# %% Python Review Refresher
+
+
+# %% Variable
+
+from ch13Async import greet
+
+
+x = 15  # Python Evaluates the value expresion first, in this case 15, and left later
+
+price = 9.99  # Diff types
+discount = 0.2
+
+type(price)
+
+result = price * (1 - discount)
+
+print(result)
+
+name = "test"
+name = 'bob'
+print(name)
+print(name * 2)  # Multi has meaning for strings this double the string
+
+a = 25
+b = a
+
+print(a)
+print(b)
+b = 17  # Change the reference
+print(a)
+print(b)
+
+# %% String Formating
+
+# Since 3.6
+
+name = 'Bob'
+greeting = 'Hello, Bob'
+print(greeting)
+# Embed var inside Strings
+greeting = f'Hello, {name}'  # When evaluated , greeting is not dinamic
+print(greeting)
+name = 'Rolf'
+print(greeting)
+greeting = 'Hello, {name}'  # Make it a template
+print(name)
+print(greeting.format(name=name))  # Pass the current value using kargs
+greeting = 'Hello, {}'  # Make it a template
+print(greeting.format(name))  # Pass the current value using position
+
+
+# %% User Input and transformations of string->to other type
+input_str = input("Input:")
+input_int = int(input_str)
+input_cal = input_int / 10.8
+# Inside FStr you cna format numbers using `:.PresicionNumf `
+print(f'{input_cal:.2f}')
+
+# %% List Tuples and set
+
+l = ['Bob', 'Rolf', 'Ann']  # Mantain the order
+t = ('Bob', 'Rolf', 'Ann')  # You cannot modify the tuple
+s = {'Bob', 'Rolf', 'Ann'}
+
+print(t[2])
+
+l[0] = 'Juan'
+print(l)
+
+'''  Error Type error
+t[0] = 'Juan'
+print(t)
+'''
+l.append('test')
+s.add('Juan')
+print(l)
+print(s)
+
+# %% Advance Set Ops
+
+friends = {'Bob', 'Rolf', 'Ann'}
+abroad = {'Bob', 'Ann'}
+local = friends.difference(abroad)
+print(local)
+
+all_f = local.union(abroad)
+print(all_f)
+
+friends_2 = {'Bob', 'Rolf', 'Ann', 'Juan'}
+
+inter = friends.intersection(friends_2)
+print(inter)
+
+# %% Booleans
+
+print(5 == 5)
+print((5 == 5) == True)
+#  !=, >, < in tuples and list
+print([] == [])
+# is operator is memory  comparison
+a = []
+b = []
+print(a == b)
+print(a is b)
+
+# %% if statements
+# What evals to false
+print(bool(""))
+print(bool([]))
+print(bool(()))
+print(bool({}))
+print(bool(0))
+print(bool(0.0))
+
+print(bool(" 1 "))
+print(bool([1]))
+print(bool((1, 2)))
+print(bool({1, 2}))
+print(bool(-1))
+print(bool(0.2))
+
+# %% IN Keyword
+l = [1, 2, 3]
+s = "test"
+m = {
+    'a': 1,
+    'b': 2,
+    2: '2'
+}
+print(1 in l)
+print(1.0 in l)
+print('t' in s)
+print('t' in m)
+print('a' in m)
+print(1 in m)
+print(2 in m)
+
 # %% Loops
+l = ''
+while not l:  # Loop while empty string
+    l = input('Stop')
 
 do_while_less_than_10 = 0
 
