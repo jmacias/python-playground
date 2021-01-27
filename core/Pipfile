@@ -9,6 +9,8 @@ name = "pypi"
 notebook = "==5.6.0"
 pytest = "*"
 autopep8 = "*"
+ipykernel = "==5.4.3"
+black = "==20.8b1"
 
 [requires]
 python_version = "3.7"
