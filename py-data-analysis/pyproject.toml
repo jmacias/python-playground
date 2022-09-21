@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "py-data-analysis"
+version = "0.1.0"
+description = ""
+authors = ["Juan Macias"]
+readme = "README.md"
+packages = [{include = "py_data_analysis"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+jupyter = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
