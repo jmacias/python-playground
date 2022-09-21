@@ -19,3 +19,4 @@ Source: ./corepy-oo
 * Curse uses JupyterLab, Decided to use jupyter inside VS Code for a more comfortable editing experience 
 * Installed poetry, created project and add dependency to jupyter. 
 * Test ipynb files using VS Code - Still prefer interactive python file
+* Chapter 3 - Importing data w/ Pandas
