@@ -68,4 +68,7 @@ df_powers.info(verbose=True)
 """
 PANDAS EXPORTING DATA 
 """
-
+df_powers.to_pickle("hpower.pkl")
+df_powers_pkl=pd.read_pickle("hpower.pkl")
+# Keeps data types - pickle is python specific format
+df_powers_pkl.dtypes
