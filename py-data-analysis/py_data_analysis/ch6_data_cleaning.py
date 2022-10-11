@@ -4,6 +4,7 @@ Data Cleaning
 Detecting and Correcting data
 """
 #%%
+from unicodedata import numeric
 import pandas as pd
 #%% Removing Unnecessary cols and rows
 wdi  = pd.read_csv("world_development_indicators.csv")
@@ -35,8 +36,11 @@ wdi.duplicated() # Boleans Series using to filter
 
 #%% Remove Duplicates
 wdi[wdi.duplicated()]
+# wdi_clean = wdi.copy()
+wdi.to_pickle('wdi_clean.pkl')
 wdi = wdi.drop_duplicates(ignore_index=True)
 wdi.shape
+
 
 #%% MISSING DATA
 """
@@ -69,4 +73,47 @@ num_missing_by_row=wdi.isna().sum(axis=1)
 wdi[num_missing_by_row>0]
 
 #%% Tackling Missing Data - Dropping 
+# By rows
+wdi.dropna() # Drop rows w/ any missing values
+wdi.dropna(thresh=18) # Drop rows One missing value 
+#By cols
+wdi.dropna(axis=1) # Drop Col w/ missing values
+wdi.dropna(axis=1, thresh=300) # Drop Col w/ more than 300 missing values
+
+#%% Tackling Missing Data - Imputing Constant
+# Filling the wholes w/ constants
+# Let's get the Index Series for Num and not num
+cat_cols = wdi.select_dtypes(exclude='number').columns
+num_cols = wdi.select_dtypes(include='number').columns
+num_cols
+# Use the series index to filter
+wdi[num_cols] = wdi[num_cols].fillna(-999)
+wdi[cat_cols] = wdi[cat_cols].fillna('MISSING')
+wdi['alcohol_consumption_per_capita'].value_counts(dropna=False)
+# cat_cols = wdi_clean.select_dtypes(exclude='number').columns
+# num_cols = wdi_clean.select_dtypes(include='number').columns
+
+# The Series w/ index for num col is used to apply the mean to 
+# The missing values
+# wdi_clean[num_cols] = wdi_clean[num_cols].fillna(wdi_clean[num_cols].mean())
+
+# you can use this to use the most common value to fill Cat cols
+wdi[cat_cols].describe().loc['top'] 
+
+# Filling w/ machine learning scikit-learn SimpleImputer
+# Replace missing values using a descriptive statistic 
+# (e.g. mean, median, or most frequent) along each column,
+#  or using a constant value.
+
+# RELOAD CLEAN DS
+wdi = pd.read_pickle('wdi_clean.pkl')
+wdi.shape
+
+#%% Tackling Missing Data - Imputing with Model
+# When missing values an be inferred from others cols
+#  scikit-learn Iterative Imputer
+#    Models each col w/ missing vals as functions of other cols
+
+#%% Handle Outliers
+
 
