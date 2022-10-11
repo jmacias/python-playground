@@ -115,5 +115,35 @@ wdi.shape
 #    Models each col w/ missing vals as functions of other cols
 
 #%% Handle Outliers
+# Unusual Values 
+# Reasons - Typos, Input Errors, Mix Categories
 
+# How to find outliers? Statistical Methods - Inter quartile Range
+wdi.hist(figsize=(20,20))
+# Try to catch  skews Histograms
+#%%
+wdi['population'].hist(figsize=(20,20), bins=50)
+#%%
+wdi[['population', 'country_name']].sort_values(by='population', ascending=False) 
+# Values w/ World as country name
+#  Different Categories
+#%% is_region is categorical - we can remove Regions from countries
+wdi.columns
+wdi=wdi[wdi['is_region']==0]
+wdi.shape
+wdi['population'].hist(figsize=(20,20), bins=50)
+# Still one outlier but less
+#%%
+wdi.boxplot('population')
+#%% Use Inter quartile to remove
+#  Q1 -1.5 * IQR or Q3 + 1.5 * IQR
+q1=wdi['population'].quantile(0.25)
+q3= wdi['population'].quantile(0.75)
 
+q3
+#  Depends on the data you can use 99 quantile 
+# Use Keep Drop or Capping/flooring
+#%%
+wdi['population'].describe()
+
+#%% Cleaning Text
