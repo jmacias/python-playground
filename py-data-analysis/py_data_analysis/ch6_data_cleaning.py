@@ -145,5 +145,3 @@ q3
 # Use Keep Drop or Capping/flooring
 #%%
 wdi['population'].describe()
-
-#%% Cleaning Text
